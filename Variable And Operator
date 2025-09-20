@@ -1,0 +1,48 @@
+📘 PHP Variables and Operators
+-----------------------------
+🔹 1. PHP Variables
+A variable is a container for storing data (like numbers, strings, or arrays).
+
+
+✅ Rules for Variables:
+-----------------------
+1) Must start with a $ sign.
+2) Example: $name = "Ajay";
+3) Must start with a letter or underscore _.
+4) ❌ Not allowed: $9num = 10;
+5) Can contain letters, numbers, and underscores.
+6) Case-sensitive ($name and $Name are different).
+
+✅ Declaring Variables:
+<?php
+$age = 25;          // Integer
+$name = "Ajay";     // String
+$price = 99.50;     // Float
+$is_active = true;  // Boolean
+?>
+
+✅ Outputting Variables:
+<?php
+$name = "Ajay";
+echo "Hello, my name is $name";   // Double quotes → variables are parsed
+echo 'Hello, my name is $name';   // Single quotes → variables not parsed
+?>
+
+
+
+🔹 2. Variable Types in PHP
+------------------------------
+1) String → $name = "PHP";
+
+2) Integer → $x = 100;
+
+3) Float/Double → $pi = 3.14;
+
+4) Boolean → $isValid = true;
+
+5) Array → $colors = array("red","green","blue");
+
+6) Object → Instances of classes
+
+7) NULL → $var = null;
+
