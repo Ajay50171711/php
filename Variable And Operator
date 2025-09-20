@@ -46,3 +46,158 @@ echo 'Hello, my name is $name';   // Single quotes → variables not parsed
 
 7) NULL → $var = null;
 
+==================================================================================
+==================================================================================
+
+🔹 3. Operators in PHP
+Operators are symbols that perform operations on variables and values.
+------------------------------------------------------------------------
+
+✅ A) Arithmetic Operators
+Used for mathematical calculations.
+
+|Operator| Description         | Example  |
+| ------ | ------------------- | -------- |
+| +      | Addition            | $a + $b  |
+| -      | Subtraction         | $a - $b  |
+| *      | Multiplication      | $a * $b  |
+| /      | Division            | $a / $b  |
+| %      | Modulus (remainder) | $a % $b  |
+| **     | Exponentiation      | $a ** $b |
+
+
+<?php
+$a = 10; $b = 3;
+echo $a + $b; // 13
+echo $a % $b; // 1
+echo $a ** $b; // 1000
+?>
+
+
+==========================================================================================
+
+✅ B) Assignment Operators
+Used to assign values.
+
+| Operator | Example    | Meaning       |
+| -------- | ---------- | ------------- |
+| `=`      | `$x = 10;` | Assign 10     |
+| `+=`     | `$x += 5;` | `$x = $x + 5` |
+| `-=`     | `$x -= 3;` | `$x = $x - 3` |
+| `*=`     | `$x *= 2;` | `$x = $x * 2` |
+| `/=`     | `$x /= 4;` | `$x = $x / 4` |
+| `%=`     | `$x %= 2;` | `$x = $x % 2` |
+
+
+==========================================================================================
+
+✅ C) Comparison Operators
+Used to compare values (returns true/false).
+
+
+| Operator | Description                   | Example     |
+| -------- | ----------------------------- | ----------- |
+| `==`     | Equal                         | `$a == $b`  |
+| `===`    | Identical (equal + same type) | `$a === $b` |
+| `!=`     | Not equal                     | `$a != $b`  |
+| `!==`    | Not identical                 | `$a !== $b` |
+| `>`      | Greater than                  | `$a > $b`   |
+| `<`      | Less than                     | `$a < $b`   |
+| `>=`     | Greater than or equal         | `$a >= $b`  |
+| `<=`     | Less than or equal            | `$a <= $b`  |
+| `<=>`    | Spaceship (returns -1, 0, 1)  | `$a <=> $b` |
+
+
+==========================================================================================
+
+✅ D) Logical Operators
+Used to combine conditions.
+=========================
+
+
+<?php
+$age = 20;
+if($age >= 18 && $age <= 30){
+    echo "Eligible";
+}
+?>
+------------------------------------------------------------
+
+<?php
+$age = 16;
+$has_permission = true;
+
+if($age >= 18 || $has_permission){
+    echo "Eligible";
+} else {
+    echo "Not Eligible";
+}
+?>
+
+
+------------------------------------------------------------
+
+<?php
+$is_logged_in = false;
+
+if(!$is_logged_in){
+    echo "Please log in first!";
+} else {
+    echo "Welcome back!";
+}
+?>
+
+==========================================================================================
+
+✅ E) Increment/Decrement Operators
+Used to increase/decrease a value.
+
+
+| Operator | Description    | Example                      |
+| -------- | -------------- | ---------------------------- |
+| `++$x`   | Pre-increment  | Increment first, then return |
+| `$x++`   | Post-increment | Return first, then increment |
+| `--$x`   | Pre-decrement  | Decrement first, then return |
+| `$x--`   | Post-decrement | Return first, then decrement |
+
+
+
+==========================================================================================
+
+✅ F) String Operators
+Used with strings.
+
+| Operator | Description   | Example    |
+| -------- | ------------- | ---------- |
+| `.`      | Concatenation | `$a . $b`  |
+| `.=`     | Append        | `$a .= $b` |
+
+
+<?php
+$txt1 = "Hello";
+$txt2 = " World!";
+echo $txt1 . $txt2;   // Hello World!
+?>
+
+
+<?php
+$a = "Hello";
+$b = " World!";
+$a .= $b;   // same as $a = $a . $b;
+echo $a;
+?>
+o/p: Hello World!
+
+
+
+==========================================================================================
+
+
+
+
+
+
+
+
+
+
