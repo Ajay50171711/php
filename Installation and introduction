@@ -1,0 +1,28 @@
+🔹 Step 1: Install Required Tools
+
+You need a server environment to run PHP code.
+
+ Install XAMPP
+👉 These come with Apache (server), MySQL (database), and PHP already configured.
+
+Download XAMPP
+
+Install and start Apache and MySQL from the XAMPP control panel.
+
+🔹 Step 2: Create Your First PHP File
+Go to the htdocs folder inside XAMPP (e.g., C:\xampp\htdocs on Windows).
+Create a folder (e.g., myproject).
+Inside it, create a file index.php with this content:
+
+<?php
+echo "Hello, PHP! This is my first program.";
+?>
+
+🔹 Step 3: Run Your PHP Code
+Open your browser and visit:
+http://localhost/myproject/index.php
+
+
+You should see:
+Hello, PHP! This is my first program.
+
