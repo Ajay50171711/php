@@ -46,6 +46,22 @@ echo 'Hello, my name is $name';   // Single quotes → variables not parsed
 
 7) NULL → $var = null;
 
+To know the type of variable we can use 
+
+1️⃣ gettype()
+<?php
+$a = 42;
+echo gettype($a);  // Outputs: integer
+?>
+
+2️⃣ var_dump()
+<?php
+$price = 19.99;
+var_dump($price);
+?>
+
+
+
 ==================================================================================
 ==================================================================================
 
