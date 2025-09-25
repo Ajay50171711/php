@@ -1,0 +1,192 @@
+🐘 PHP Conditional Statements
+A conditional statement allows you to execute different blocks of code depending on whether a condition is true or false.
+=======================================================================================================================
+1. The if Statement
+The simplest conditional: executes code if the condition is true.
+
+<?php
+$age = 20;
+
+if ($age >= 18) {
+    echo "You are an adult.";
+}
+?>
+---------------------
+👉 Output:
+You are an adult.
+
+*********************************************************************************************
+
+2. The if...else Statement
+Runs one block if the condition is true, another if false.
+
+<?php
+$age = 16;
+
+if ($age >= 18) {
+    echo "You can vote.";
+} else {
+    echo "You cannot vote yet.";
+}
+?>
+---------------------
+👉 Output:
+You cannot vote yet.
+
+
+*********************************************************************************************
+
+3. The if...elseif...else Statement
+
+Used when you have multiple conditions.
+
+<?php
+$marks = 75;
+
+if ($marks >= 90) {
+    echo "Grade: A+";
+} elseif ($marks >= 75) {
+    echo "Grade: A";
+} elseif ($marks >= 50) {
+    echo "Grade: B";
+} else {
+    echo "Grade: F";
+}
+?>
+------------------------------
+👉 Output:
+Grade: A
+
+*********************************************************************************************
+
+4. The Ternary Operator (?:)
+
+Shorthand for simple if...else.
+
+<?php
+$age = 18;
+$message = ($age >= 18) ? "Adult" : "Minor";
+echo $message;
+?>
+---------------------------------
+👉 Output:
+Adult
+
+
+*********************************************************************************************
+
+5. Null Coalescing Operator (??)
+
+Checks if a variable exists/is not null.
+
+<?php
+$username = $_GET['user'] ?? "Guest";
+echo "Hello, $username!";
+?>
+
+
+👉 If ?user=John in URL → Output:
+Hello, John!
+
+
+👉 If no query → Output:
+Hello, Guest!
+
+
+*********************************************************************************************
+
+6. The switch Statement
+
+Best when you’re checking one variable against many values.
+
+<?php
+$day = "Tue";
+
+switch ($day) {
+    case "Mon":
+        echo "Start of the week!";
+        break;
+    case "Tue":
+        echo "Second day!";
+        break;
+    case "Fri":
+        echo "Weekend is near!";
+        break;
+    default:
+        echo "Just another day.";
+}
+?>
+
+-------------------------
+👉 Output:
+Second day!
+
+
+
+*********************************************************************************************
+
+7. Nested if Statements
+
+One if inside another.
+
+<?php
+$age = 25;
+$citizen = true;
+
+if ($age >= 18) {
+    if ($citizen) {
+        echo "You are eligible to vote.";
+    } else {
+        echo "You must be a citizen to vote.";
+    }
+} else {
+    echo "You are too young to vote.";
+}
+?>
+
+
+
+*********************************************************************************************
+
+9. Switch with Multiple Cases (Fall-through)
+
+You can group cases together.
+
+<?php
+$day = "Sat";
+
+switch ($day) {
+    case "Sat":
+    case "Sun":
+        echo "Weekend!";
+        break;
+    default:
+        echo "Weekday!";
+}
+?>
+
+👉 Output:
+Weekend!
+
+
+*********************************************************************************************
+
+10. Advanced: Match Expression (PHP 8+)
+Similar to switch but more concise and strict comparison.
+
+<?php
+$day = "Mon";
+
+$message = match($day) {
+    "Mon" => "Start of the week!",
+    "Fri" => "Almost weekend!",
+    "Sat", "Sun" => "Weekend!",
+    default => "Midweek day.",
+};
+
+echo $message;
+?>
+
+
+👉 Output:
+Start of the week!
