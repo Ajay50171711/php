@@ -1,0 +1,181 @@
+🐘 PHP Loops
+A loop executes a block of code repeatedly as long as a condition is true or for a fixed number of iterations.
+================================================================================================================
+
+1. for Loop
+Used when you know how many times to repeat.
+
+<?php
+for ($i = 1; $i <= 5; $i++) {
+    echo "Number: $i <br>";
+}
+?>
+
+
+👉 Output:
+
+Number: 1  
+Number: 2  
+Number: 3  
+Number: 4  
+Number: 5
+
+*********************************************************************************************************************
+
+2. while Loop
+
+Repeats code while a condition is true.
+
+<?php
+$count = 1;
+
+while ($count <= 5) {
+    echo "Count: $count <br>";
+    $count++;
+}
+?>
+
+
+👉 Output:
+
+Count: 1  
+Count: 2  
+Count: 3  
+Count: 4  
+Count: 5
+
+
+*********************************************************************************************************************
+
+3. do...while Loop
+
+Executes at least once, even if the condition is false.
+
+<?php
+$count = 6;
+
+do {
+    echo "Count: $count <br>";
+    $count++;
+} while ($count <= 5);
+?>
+
+
+👉 Output:
+
+Count: 6
+
+
+*********************************************************************************************************************
+
+4. foreach Loop (Arrays)
+
+Iterates over arrays/collections.
+
+<?php
+$fruits = ["Apple", "Banana", "Orange"];
+
+foreach ($fruits as $fruit) {
+    echo "I like $fruit <br>";
+}
+?>
+
+
+👉 Output:
+
+I like Apple  
+I like Banana  
+I like Orange
+
+
+
+With key-value pairs:
+=====================
+
+<?php
+$person = ["name" => "John", "age" => 25];
+
+foreach ($person as $key => $value) {
+    echo ucfirst($key) . ": $value <br>";
+}
+?>
+
+
+👉 Output:
+
+Name: John  
+Age: 25
+
+
+*********************************************************************************************************************
+
+5. Nested Loops
+
+A loop inside another loop.
+
+<?php
+for ($i = 1; $i <= 3; $i++) {
+    for ($j = 1; $j <= 2; $j++) {
+        echo "i=$i, j=$j <br>";
+    }
+}
+?>
+
+
+👉 Output:
+
+i=1, j=1  
+i=1, j=2  
+i=2, j=1  
+i=2, j=2  
+i=3, j=1  
+i=3, j=2
+
+
+
+*********************************************************************************************************************
+
+6. Loop Control: break
+
+Exits the loop immediately.
+
+<?php
+for ($i = 1; $i <= 10; $i++) {
+    if ($i == 5) {
+        break;
+    }
+    echo "i=$i <br>";
+}
+?>
+
+
+👉 Output:
+
+i=1  
+i=2  
+i=3  
+i=4
+
+
+*********************************************************************************************************************
+
+7. Loop Control: continue
+
+Skips the current iteration and continues with the next.
+
+<?php
+for ($i = 1; $i <= 5; $i++) {
+    if ($i == 3) {
+        continue;
+    }
+    echo "i=$i <br>";
+}
+?>
+
+
+👉 Output:
+
+i=1  
+i=2  
+i=4  
+i=5
