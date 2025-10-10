@@ -1,0 +1,199 @@
+🐘 PHP Functions – Complete Notes
+🎯 Overview
+
+A function in PHP is a reusable block of code that performs a specific task.
+Functions help make your code modular, readable, and maintainable.
+
+💡 Why Use Functions?
+
+🔁 Avoid repeating code
+
+🧩 Improve code structure
+
+⚙️ Make maintenance easier
+
+🚀 Reuse logic across projects
+
+🪶 Simplify debugging and testing
+
+⚙️ Types of Functions
+
+Built-in Functions → Provided by PHP (e.g. strlen(), date(), strtoupper() etc.)
+
+User-defined Functions → Created by the programmer for custom tasks.
+
+🧱 Syntax
+function functionName($parameter1, $parameter2, ...) {
+    // Code to execute
+    return $value; // Optional
+}
+
+🧩 Example:
+<?php
+function greet() {
+    echo "Hello, welcome to PHP functions!";
+}
+
+greet(); // Function call
+?>
+
+🧠 Function with Parameters
+<?php
+function add($a, $b) {
+    return $a + $b;
+}
+
+echo add(10, 5); // Output: 15
+?>
+
+⚡ Default Parameter Values
+<?php
+function greet($name = "Guest") {
+    echo "Hello, $name!";
+}
+
+greet();        // Output: Hello, Guest!
+greet("Ravi");  // Output: Hello, Ravi!
+?>
+
+🔁 Returning Values
+<?php
+function square($n) {
+    return $n * $n;
+}
+
+echo square(4); // Output: 16
+?>
+
+🧮 Returning Multiple Values
+<?php
+function calculate($a, $b) {
+    $sum = $a + $b;
+    $diff = $a - $b;
+    return array($sum, $diff);
+}
+
+list($sum, $diff) = calculate(10, 5);
+echo "Sum: $sum, Difference: $diff";
+?>
+
+🪄 Variable Function Names
+<?php
+function sayHello() {
+    echo "Hello from dynamic function!";
+}
+
+$func = "sayHello";
+$func(); // Calls sayHello()
+?>
+
+🔤 Function Type Declarations (PHP 7+)
+<?php
+function multiply(float $a, float $b): float {
+    return $a * $b;
+}
+
+echo multiply(3.5, 2); // Output: 7
+?>
+
+🔗 Pass by Reference
+<?php
+function addTen(&$num) {
+    $num += 10;
+}
+
+$value = 20;
+addTen($value);
+echo $value; // Output: 30
+?>
+
+🔁 Recursive Function
+<?php
+function factorial($n) {
+    if ($n == 0) return 1;
+    return $n * factorial($n - 1);
+}
+
+echo factorial(5); // Output: 120
+?>
+
+🕶️ Anonymous (Lambda) Function
+<?php
+$greet = function($name) {
+    return "Hello, $name!";
+};
+
+echo $greet("Priya");
+?>
+
+🧭 Arrow Function (PHP 7.4+)
+<?php
+$multiply = fn($a, $b) => $a * $b;
+echo $multiply(3, 4); // Output: 12
+?>
+
+🧩 Variable Scope in PHP Functions
+Scope Type	Description
+Local	Declared inside a function; accessible only within it
+Global	Declared outside; can be accessed inside using global
+Static	Retains its value between function calls
+Example:
+<?php
+function counter() {
+    static $count = 0;
+    $count++;
+    echo $count . "<br>";
+}
+
+counter(); // 1
+counter(); // 2
+counter(); // 3
+?>
+
+🌐 Using Global Variables
+<?php
+$siteName = "Pride Computers";
+
+function showSite() {
+    global $siteName;
+    echo "Welcome to $siteName!";
+}
+
+showSite();
+?>
+
+🧩 Example: Complete Program
+<?php
+function studentInfo($name, $course, $marks) {
+    echo "Student Name: $name <br>";
+    echo "Course: $course <br>";
+    echo "Marks: $marks <br>";
+
+    if ($marks >= 50) {
+        echo "Result: Pass <br><br>";
+    } else {
+        echo "Result: Fail <br><br>";
+    }
+}
+
+studentInfo("Ravi", "MS-CIT", 78);
+studentInfo("Pooja", "Tally Prime", 45);
+?>
+
+🧭 Best Practices
+
+✅ Use meaningful names for functions
+✅ Keep functions short and focused
+✅ Use type declarations for clarity
+✅ Avoid global variables when possible
+✅ Use return for flexibility instead of echo
+
+🧠 Summary Table
+Concept	Description	Example
+Function Declaration	Create a reusable block	function test(){}
+Parameters	Pass values	function add($a,$b){}
+Return	Send back result	return $sum;
+Default Values	Use fallback	function greet($n="Guest")
+Recursive	Calls itself	factorial()
+Anonymous	No name	$fn = function(){}
+Arrow	Short syntax	fn($a)=>$a*2
