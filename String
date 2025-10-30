@@ -1,0 +1,88 @@
+🧩 Topic: String Functions in PHP
+1. Introduction to Strings in PHP
+
+What is a string?
+
+Declaring strings using single quotes ' ' and double quotes " ".
+Difference between single and double quotes (variable interpolation, escape sequences)
+
+
+$name = "Alice";
+echo 'Hello $name';   // Output: Hello $name
+echo "Hello $name";   // Output: Hello Alice
+
+
+2. Basic String Functions
+Introduce the most commonly used ones with examples:
+
+| Function           | Description                                               | Example                                                         |
+| ------------------ | --------------------------------------------------------- | --------------------------------------------------------------- |
+| `strlen()`         | Returns the length of a string                            | `echo strlen("Hello"); // 5`                                    |
+| `str_word_count()` | Counts the number of words                                | `echo str_word_count("Hello world"); // 2`                      |
+| `strrev()`         | Reverses a string                                         | `echo strrev("Hello"); // olleH`                                |
+| `strpos()`         | Finds the position of the first occurrence of a substring | `echo strpos("Hello world", "world"); // 6`                     |
+| `str_replace()`    | Replaces some characters with others                      | `echo str_replace("world", "PHP", "Hello world"); // Hello PHP` |
+
+
+3. String Manipulation Functions
+Show how to transform or modify strings:
+
+strtolower() → converts to lowercase
+strtoupper() → converts to uppercase
+ucfirst() → capitalizes first letter
+ucwords() → capitalizes first letter of each word
+trim() → removes whitespace from both sides
+ltrim() / rtrim() → remove from left/right side only
+
+
+$text = "  hello world  ";
+echo trim($text);            // "hello world"
+echo strtoupper($text);      // "  HELLO WORLD  "
+echo ucwords("hello php");   // "Hello Php"
+
+
+
+4. Substring and Extraction
+
+substr($string, $start, $length) – extract part of a string
+echo substr("Hello world", 0, 5); // Hello
+
+
+substr_replace($string, $replacement, $start, $length)
+echo substr_replace("Hello world", "PHP", 6); // Hello PHP
+
+
+5. String Comparison
+
+strcmp() – case-sensitive comparison
+strcasecmp() – case-insensitive comparison
+strnatcmp() – natural order comparison
+
+Example:
+echo strcmp("Hello", "hello");   // not equal
+echo strcasecmp("Hello", "hello"); // equal
+
+
+6. String Splitting and Joining
+
+explode() → convert string → array
+implode() (or join()) → convert array → string
+
+Example:
+$str = "apple,banana,grape";
+$fruits = explode(",", $str);
+print_r($fruits);
+echo implode(" | ", $fruits); // apple | banana | grape
+
+
+7. Formatting and Escaping
+
+addslashes() / stripslashes()
+htmlspecialchars() / htmlentities() for HTML output
+printf() / sprintf() for formatted strings
+
+$txt = "I'm a developer";
+echo addslashes($txt);  // I\'m a developer
+printf("My name is %s and I am %d years old.", "Alice", 25);
+
+
