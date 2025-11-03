@@ -1,0 +1,598 @@
+🧠 What is an Array?
+
+An array is a special variable that can hold multiple values under a single name.
+You can access each value using an index number or a key name.
+
+🛠️ Creating an Array
+
+You can create arrays using the array() function or the short array syntax [].
+
+Example 1 — Using array()
+$cars = array("Volvo", "BMW", "Toyota");
+
+Example 2 — Using Short Array Syntax
+
+(Line breaks are allowed)
+
+$cars = [
+  "Volvo",
+  "BMW",
+  "Toyota"
+];
+
+🎯 Accessing Array Items
+
+To access an array item, refer to its index number.
+
+Example
+$cars = array("Volvo", "BMW", "Toyota");
+echo $cars[2]; // Outputs: Toyota
+
+🔹 Indexed Arrays (Numeric Keys)
+Example
+<?php
+/* ------- Indexed Array Example ---------- */
+$colors = array('red', 'yellow', 'blue', 'green');
+
+echo $colors[0] . "<br>"; // red
+
+// 2nd way
+$colors = ['red', 'yellow', 'blue', 'green'];
+
+// Display array using print_r()
+echo "<pre>";
+print_r($colors);
+echo "</pre>";
+
+// 3rd way — assigning values individually
+$colors[0] = "red";
+$colors[1] = "green";
+$colors[2] = "yellow";
+$colors[3] = "blue";
+
+// 4th way — using loop
+echo "<ul>";
+for ($i = 0; $i < 4; $i++) {
+   echo "<li>" . $colors[$i] . "</li>";
+}
+echo "</ul>";
+?>
+
+🔸 Associative Arrays
+
+Associative arrays use named keys instead of numeric indexes.
+
+Example
+$car = array(
+  "brand" => "Ford",
+  "model" => "Mustang",
+  "year"  => 1964
+);
+
+var_dump($car);
+
+🧾 Accessing Associative Array Items
+
+Access values using the key name.
+
+$car = array("brand" => "Ford", "model" => "Mustang", "year" => 1964);
+echo $car["model"]; // Outputs: Mustang
+
+✏️ Changing Array Values
+
+To change a value, use the key name.
+
+$car = array("brand" => "Ford", "model" => "Mustang", "year" => 1964);
+$car["year"] = 2024; // Update year
+var_dump($car);
+
+💡 Associative Array Example
+<?php
+$age = array(
+  "bill"  => 25,
+  "steve" => 28,
+  "elon"  => 22
+);
+
+// Access each value
+echo $age["bill"] . "<br>";
+echo $age["steve"] . "<br>";
+echo $age["elon"] . "<br>";
+
+// Print the array
+echo '<pre>';
+print_r($age);
+echo '</pre>';
+
+echo '<pre>';
+var_dump($age);
+echo '</pre>';
+
+// Another way to define an associative array
+$age1 = [
+  "bill"  => 25,
+  "steve" => 28,
+  "elon"  => 22
+];
+
+echo '<pre>';
+print_r($age1);
+echo '</pre>';
+
+echo '<pre>';
+var_dump($age1);
+echo '</pre>';
+
+// Reassign a value
+$age["elon"] = 50;
+
+echo '<pre>';
+print_r($age);
+echo '</pre>';
+?>
+
+🔢 Arrays with Numeric Keys
+$age2 = array(
+  100 => 25,
+  10  => 28,
+  13  => 22
+);
+
+echo '<pre>';
+print_r($age2);
+echo '</pre>';
+
+🔤 Arrays with Both Numeric and String Keys
+$age3 = array(
+  100   => 25,
+  "bill" => 28,
+  13    => 22
+);
+
+echo '<pre>';
+var_dump($age3);
+echo '</pre>';
+?>
+
+
+
+🔁 Looping Through Arrays in PHP
+
+You can loop through arrays (both indexed and associative) using the foreach loop.
+It’s the easiest and most common way to access every element in an array.
+
+🧩 Loop Through an Indexed Array
+
+Use a foreach loop to print all the values in an indexed array.
+
+🧠 Syntax:
+foreach ($array as $value) {
+  // Code to execute
+}
+
+✅ Example:
+$cars = array("Volvo", "BMW", "Toyota");
+
+foreach ($cars as $x) {
+  echo "$x <br>";
+}
+
+🔹 Output:
+Volvo
+BMW
+Toyota
+
+Another Example:
+<?php
+$colors = [
+  "red",
+  "green",
+  "blue"
+];
+
+foreach ($colors as $value) {
+  echo $value . "<br>";
+}
+?>
+
+🔹 Output:
+red
+green
+blue
+
+🗝️ Loop Through an Associative Array
+
+In associative arrays, each element has a key and a value.
+You can loop through both using the foreach loop.
+
+🧠 Syntax:
+foreach ($array as $key => $value) {
+  // Code using both key and value
+}
+
+✅ Example:
+$car = array(
+  "brand" => "Ford",
+  "model" => "Mustang",
+  "year"  => 1964
+);
+
+foreach ($car as $x => $y) {
+  echo "$x: $y <br>";
+}
+
+🔹 Output:
+brand: Ford
+model: Mustang
+year: 1964
+
+Another Example:
+<?php
+$age = [
+  "bill"  => 25,
+  "steve" => 28,
+  "elon"  => 22,
+];
+
+foreach ($age as $key => $value) {
+  echo "$key = $value <br>";
+}
+?>
+
+🔹 Output:
+bill = 25
+steve = 28
+elon = 22
+
+🧱 Display Associative Array Inside an HTML List
+
+You can also use foreach to print array elements inside HTML tags.
+
+✅ Example:
+<?php
+$age = [
+  "bill"  => 25,
+  "steve" => 28,
+  "elon"  => 22,
+];
+
+echo "<ul>";
+foreach ($age as $key => $value) {
+  echo "<li>$key = $value</li>";
+}
+echo "</ul>";
+?>
+
+🔹 Output (HTML):
+
+bill = 25
+steve = 28
+elon = 22
+
+
+🧩 PHP Multidimensional Arrays
+A multidimensional array is an array that contains one or more arrays inside it.
+
+🧠 What is a Multidimensional Array?
+PHP supports arrays that can be two, three, or even more levels deep — though anything beyond three levels is usually difficult to manage.
+The dimension of an array represents the number of indices needed to access an element:
+| Type                   | Description               | Example Access  |
+| ---------------------- | ------------------------- | --------------- |
+| 1D (One-dimensional)   | Simple array              | `$arr[0]`       |
+| 2D (Two-dimensional)   | Array of arrays           | `$arr[0][1]`    |
+| 3D (Three-dimensional) | Array of arrays of arrays | `$arr[0][1][2]` |
+
+
+🧱 PHP Two-dimensional Arrays
+A two-dimensional array is essentially an array of arrays.
+You can visualize it like a table — with rows and columns.
+
+✅ Example
+<?php
+$emp = [
+  [1, "Krishana", "Manager", 50000],
+  [2, "Salman", "Salesman", 20000],
+  [3, "Mohan", "Computer Operator", 12000],
+  [4, "Amir", "Driver", 5000]
+];
+
+echo "<pre>";
+print_r($emp);
+echo "</pre>";
+?>
+
+🔹 Output:
+Array
+(
+    [0] => Array ( [0] => 1 [1] => Krishana [2] => Manager [3] => 50000 )
+    [1] => Array ( [0] => 2 [1] => Salman [2] => Salesman [3] => 20000 )
+    [2] => Array ( [0] => 3 [1] => Mohan [2] => Computer Operator [3] => 12000 )
+    [3] => Array ( [0] => 4 [1] => Amir [2] => Driver [3] => 5000 )
+)
+
+
+🎯 Accessing Elements (Row and Column)
+To access elements, use two indices — [row][column].
+echo $emp[0][0] . " "; // 1
+echo $emp[0][1] . " "; // Krishana
+echo $emp[0][2] . " "; // Manager
+echo $emp[0][3] . " "; // 50000
+
+
+🔁 Loop Through a 2D Array Using for Loop
+You can use nested for loops — one for rows and one for columns.
+for ($row = 0; $row < 4; $row++) {
+  for ($col = 0; $col < 4; $col++) {
+    echo $emp[$row][$col] . " ";
+  }
+  echo "<br>";
+}
+
+🔹 Output:
+1 Krishana Manager 50000
+2 Salman Salesman 20000
+3 Mohan Computer Operator 12000
+4 Amir Driver 5000
+
+
+🔄 Loop Through a 2D Array Using foreach
+foreach is simpler and more readable for multidimensional arrays.
+foreach ($emp as $v1) {
+  foreach ($v1 as $v2) {
+    echo $v2 . " ";
+  }
+  echo "<br>";
+}
+
+🔹 Output:
+1 Krishana Manager 50000
+2 Salman Salesman 20000
+3 Mohan Computer Operator 12000
+4 Amir Driver 5000
+
+
+🧮 Display Multidimensional Array in an HTML Table
+We can make the output more readable by displaying it in a HTML table.
+<?php
+echo "<table border='2px' cellpadding='5px' cellspacing='0'>";
+echo "<tr>
+        <th>Emp Id</th>
+        <th>Emp Name</th>
+        <th>Designation</th>
+        <th>Salary</th>
+      </tr>";
+
+foreach ($emp as $v1) {
+  echo "<tr>";
+  foreach ($v1 as $v2) {
+    echo "<td>$v2</td>";
+  }
+  echo "</tr>";
+}
+
+echo "</table>";
+?>
+
+🔹 Output (HTML Table):
+| Emp Id | Emp Name | Designation       | Salary |
+| ------ | -------- | ----------------- | ------ |
+| 1      | Krishana | Manager           | 50000  |
+| 2      | Salman   | Salesman          | 20000  |
+| 3      | Mohan    | Computer Operator | 12000  |
+| 4      | Amir     | Driver            | 5000   |
+
+
+
+🧩 PHP Multidimensional Associative Arrays
+
+A multidimensional associative array is used to store grouped data in the form of key–value pairs inside multiple levels of arrays.
+
+🧠 What is a Multidimensional Associative Array?
+
+An associative array stores data in key–value pairs, where the key can be a string or integer.
+
+A multidimensional associative array stores arrays inside another associative array, allowing you to represent structured or related data (like a table of students and their subjects).
+
+🏗️ Example Structure
+<?php
+$marks = [
+  "Krishna" => [
+    "physics"    => 85,
+    "maths"      => 78,
+    "chemistry"  => 89
+  ],
+  "Salman" => [
+    "physics"    => 68,
+    "maths"      => 73,
+    "chemistry"  => 79
+  ],
+  "Mohan" => [
+    "physics"    => 62,
+    "maths"      => 67,
+    "chemistry"  => 92
+  ]
+];
+
+echo "<pre>";
+print_r($marks);
+echo "</pre>";
+?>
+
+🔹 Output (Array Structure)
+Array
+(
+    [Krishna] => Array
+        (
+            [physics] => 85
+            [maths] => 78
+            [chemistry] => 89
+        )
+
+    [Salman] => Array
+        (
+            [physics] => 68
+            [maths] => 73
+            [chemistry] => 79
+        )
+
+    [Mohan] => Array
+        (
+            [physics] => 62
+            [maths] => 67
+            [chemistry] => 92
+        )
+)
+
+🔁 Loop Through a Multidimensional Associative Array
+
+We can use nested foreach loops —
+one loop for student names (keys), and another for their subject marks (inner arrays).
+
+✅ Example:
+<?php
+foreach ($marks as $student => $subjects) {
+  echo $student . ": ";
+  
+  foreach ($subjects as $marksValue) {
+    echo $marksValue . " ";
+  }
+  
+  echo "<br>";
+}
+?>
+
+🔹 Output:
+Krishna: 85 78 89
+Salman: 68 73 79
+Mohan: 62 67 92
+
+🧮 Display in HTML Table
+
+You can represent this data in a tabular format using HTML and PHP loops.
+
+✅ Example:
+<?php
+echo "<table border='2px' cellpadding='5px' cellspacing='0'>
+  <tr>
+    <th>Student Name</th>
+    <th>Physics</th>
+    <th>Maths</th>
+    <th>Chemistry</th>
+  </tr>";
+
+foreach ($marks as $student => $subjects) {
+  echo "<tr>
+          <td>$student</td>";
+  
+  foreach ($subjects as $marksValue) {
+    echo "<td>$marksValue</td>";
+  }
+  
+  echo "</tr>";
+}
+
+echo "</table>";
+?>
+
+🔹 Output (HTML Table)
+| Student Name | Physics | Maths | Chemistry |
+| ------------ | ------- | ----- | --------- |
+| Krishna      | 85      | 78    | 89        |
+| Salman       | 68      | 73    | 79        |
+| Mohan        | 62      | 67    | 92        |
+
+
+
+
+🧩 PHP Indexed and Multidimensional Associative Arrays using list()
+
+PHP allows destructuring arrays directly inside a loop using the list() function.
+This helps you extract multiple values from each sub-array in a single line, making your code more readable.
+
+🔹 1. Indexed Multidimensional Array with list()
+🧠 Concept:
+
+A multidimensional indexed array contains arrays inside another array.
+Using list(), you can assign array elements to variables while looping.
+
+✅ Example:
+<?php
+/* ----------- Indexed Multidimensional Array ----------- */
+$emp = [
+  [1, "Krishana", "Manager", 50000],
+  [2, "Salman", "Salesman", 20000],
+  [3, "Mohan", "Computer Operator", 12000],
+  [4, "Amir", "Driver", 5000]
+];
+
+foreach ($emp as list($id, $name, $desg, $salary)) {
+  echo "$id $name $desg $salary <br>";
+}
+?>
+
+🔹 Output:
+1 Krishana Manager 50000
+2 Salman Salesman 20000
+3 Mohan Computer Operator 12000
+4 Amir Driver 5000
+
+🧮 Displaying Data in an HTML Table
+
+You can also display this array data neatly using a <table>.
+
+<?php
+echo "<table border='1px' cellpadding='5px' cellspacing='0'>
+  <tr>
+    <th>Emp Id</th>
+    <th>Emp Name</th>
+    <th>Designation</th>
+    <th>Salary</th>
+  </tr>";
+
+foreach ($emp as list($id, $name, $desg, $salary)) {
+  echo "<tr>
+          <td>$id</td>
+          <td>$name</td>
+          <td>$desg</td>
+          <td>$salary</td>
+        </tr>";
+}
+
+echo "</table>";
+?>
+
+🔹 Output (HTML Table):
+| Emp Id | Emp Name | Designation       | Salary |
+| ------ | -------- | ----------------- | ------ |
+| 1      | Krishana | Manager           | 50000  |
+| 2      | Salman   | Salesman          | 20000  |
+| 3      | Mohan    | Computer Operator | 12000  |
+| 4      | Amir     | Driver            | 5000   |
+
+🔸 2. Multidimensional Associative Array with list()
+🧠 Concept:
+
+In a multidimensional associative array, each inner array contains key–value pairs.
+Using list() with array destructuring (PHP 7.1+), you can assign values by their keys.
+
+✅ Example:
+<?php
+/* ----------- Multidimensional Associative Array ----------- */
+$emp = [
+  ["id" => 1, "name" => "Krishana", "designation" => "Manager", "salary" => 50000],
+  ["id" => 2, "name" => "Salman", "designation" => "Salesman", "salary" => 20000],
+  ["id" => 3, "name" => "Mohan", "designation" => "Computer Operator", "salary" => 12000],
+  ["id" => 4, "name" => "Amir", "designation" => "Driver", "salary" => 5000]
+];
+
+foreach ($emp as list("id" => $id, "name" => $name, "designation" => $desg, "salary" => $salary)) {
+  echo "Id: $id; Name: $name; Designation: $desg; Salary: $salary<br>";
+}
+?>
+
+🔹 Output:
+Id: 1; Name: Krishana; Designation: Manager; Salary: 50000
+Id: 2; Name: Salman; Designation: Salesman; Salary: 20000
+Id: 3; Name: Mohan; Designation: Computer Operator; Salary: 12000
+Id: 4; Name: Amir; Designation: Driver; Salary: 5000
+
