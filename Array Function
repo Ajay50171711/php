@@ -1,112 +1,56 @@
 🧮 PHP count() and sizeof() Functions
-Both count() and sizeof() are used to count the number of elements in an array.
-In PHP, they are identical functions — sizeof() is simply an alias of count().
+✅ Purpose
 
-🔹 PHP count() Function
-🧠 Definition:
-The count() function returns the number of elements in an array.
-✅ Example:
-<?php
-$cars = array("Volvo", "BMW", "Toyota");
-echo count($cars);
-?>
+Both count() and sizeof() return the number of elements in an array.
+They are identical — sizeof() is just an alias of count().
 
-🔹 Output:
-3
-
-
-⚙️ Syntax:
+⚙️ Syntax
 count(array, mode)
-
-| Parameter | Description                                                                                                                                                                       |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **array** | (Required) The array to count elements from                                                                                                                                       |
-| **mode**  | (Optional) The mode of counting: <br> `0` - Default (does not count elements of multidimensional arrays) <br> `1` - Counts all elements recursively (for multidimensional arrays) |
-
-🔸 PHP sizeof() Function
-The sizeof() function works exactly the same as count() — it’s just another name for it.
-✅ Example:
-<?php
-$cars = array("Volvo", "BMW", "Toyota");
-echo sizeof($cars);
-?>
-
-🔹 Output:
-3
-
-
-⚙️ Syntax:
 sizeof(array, mode)
 
-| Parameter | Description                                                                    |
-| --------- | ------------------------------------------------------------------------------ |
-| **array** | (Required) The array to count elements from                                    |
-| **mode**  | (Optional) The mode of counting: <br> `0` - Default <br> `1` - Recursive count |
+Parameter	Description
+array	The array whose elements you want to count
+mode	(Optional) Counting mode:
+0 → Default (non-recursive)
+1 → Recursive (counts nested arrays too)
+🧩 Examples
+🔸 Simple Array
+$cars = ["Volvo", "BMW", "Toyota"];
+echo count($cars); // 3
+echo sizeof($cars); // 3
 
-🧩 Example with Single and Multidimensional Arrays
-<?php
-$food = array('orange', 'banana', 'apple');
+🔸 Multidimensional Array
+$food1 = [
+  'fruits' => ['orange', 'banana', 'apple'],
+  'veggie' => ['carrot', 'collard', 'pea']
+];
 
-// Mode = 1 (recursive)
-echo count($food, 1) . '<br>';
+echo count($food1, 1);         // 8 (recursive)
+echo sizeof($food1['fruits']); // 3
 
-$food1 = array(
-  'fruits' => array('orange', 'banana', 'apple'),
-  'veggie' => array('carrot', 'collard', 'pea')
-);
-
-// Recursive count (mode 1)
-echo sizeof($food1, 1) . '<br>';
-
-// Count only fruits
-echo sizeof($food1['fruits'], 1) . '<br>';
-?>
-
-🔹 Explanation:
-
-
-count($food, 1) → counts all elements in a simple array (3)
-
-
-sizeof($food1, 1) → counts all elements including nested ones (8)
-
-
-sizeof($food1['fruits'], 1) → counts only the fruit items (3)
-
-
-
-🔁 Using count() in a Loop
-You can use count() to determine the length of an array for looping.
-✅ Example:
-<?php
-$food = array('orange', 'banana', 'apple');
-
-$len = count($food);
-for ($i = 0; $i < $len; $i++) {
+🔁 Using count() in Loops
+$food = ['orange', 'banana', 'apple'];
+for ($i = 0; $i < count($food); $i++) {
   echo $food[$i] . "<br>";
 }
-?>
 
-🔹 Output:
+
+Output:
+
 orange
 banana
 apple
 
+🧮 array_count_values() Function
 
-🧮 PHP array_count_values() Function
-🧠 Definition:
-array_count_values() returns an associative array with values as keys and their frequency counts as values.
-✅ Example:
-<?php
-$food2 = array('orange', 'banana', 'orange', 'apple');
+Returns an associative array showing how many times each value appears.
 
-// Count array values
-echo "<pre>";
+$food2 = ['orange', 'banana', 'orange', 'apple'];
 print_r(array_count_values($food2));
-echo "</pre>";
-?>
 
-🔹 Output:
+
+Output:
+
 Array
 (
     [orange] => 2
