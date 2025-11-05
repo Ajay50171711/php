@@ -1,5 +1,5 @@
-🧮 PHP count() and sizeof() Functions
-✅ Purpose
+🧮 PHP Array Functions Cheat Sheet
+✅ count() and sizeof()
 
 Both count() and sizeof() return the number of elements in an array.
 They are identical — sizeof() is just an alias of count().
@@ -16,8 +16,8 @@ mode	(Optional) Counting mode:
 🧩 Examples
 🔸 Simple Array
 $cars = ["Volvo", "BMW", "Toyota"];
-echo count($cars); // 3
-echo sizeof($cars); // 3
+echo count($cars);   // 3
+echo sizeof($cars);  // 3
 
 🔸 Multidimensional Array
 $food1 = [
@@ -30,6 +30,7 @@ echo sizeof($food1['fruits']); // 3
 
 🔁 Using count() in Loops
 $food = ['orange', 'banana', 'apple'];
+
 for ($i = 0; $i < count($food); $i++) {
   echo $food[$i] . "<br>";
 }
@@ -41,7 +42,7 @@ orange
 banana
 apple
 
-🧮 array_count_values() Function
+🧮 array_count_values()
 
 Returns an associative array showing how many times each value appears.
 
@@ -57,3 +58,370 @@ Array
     [banana] => 1
     [apple] => 1
 )
+
+🔍 in_array() Function
+
+The in_array() function searches an array for a specific value.
+
+Syntax
+in_array(search, array, type)
+
+
+Return Value:
+Returns TRUE if the value is found in the array, or FALSE otherwise.
+
+🔑 array_search() Function
+
+The array_search() function searches an array for a value and returns the key.
+
+Syntax
+array_search(value, array, strict)
+
+
+Return Value:
+Returns the key of a value if it is found in the array, and FALSE otherwise.
+If the value occurs more than once, the first matching key is returned.
+
+🧩 Example
+$food = ['orange', 'banana', 'apple', 'grapes'];
+
+echo in_array("lime", $food); // false
+
+/* ---- If Condition InArray------ */
+if (in_array("apple", $food)) {
+    echo "Find Successfully.";
+} else {
+    echo "Can't Find.";	
+}
+
+/* ---- Strict Mode ------ */
+echo in_array(55, $food, true);
+
+/* ---- Multidimensional Array ------ */
+$a = [['p', 'h'], ['p', 'r'], 'o'];
+
+if (in_array(['p', 'h'], $a)) {}
+
+/* ---------- Array Search ------------- */
+echo array_search("apple", $food);
+
+/* ---------- Associative Array ------------- */
+$food = ['a' => 'orange', 'b' => 'banana', 'c' => 'apple', 'd' => 'grapes'];
+
+echo array_search("apple", $food);
+echo in_array("apple", $food);
+
+🔄 array_replace() Function
+
+The array_replace() function replaces the values of the first array with the values from the following arrays.
+
+Syntax
+array_replace(array1, array2, array3, ...)
+
+
+Return Value:
+Returns the replaced array, or NULL if an error occurs.
+
+🔁 array_replace_recursive() Function
+
+Replaces values recursively if arrays are nested.
+
+Syntax
+array_replace_recursive(array1, array2, array3, ...)
+
+
+Return Value:
+Returns the replaced array, or NULL if an error occurs.
+
+🧩 Examples
+$fruit = ['orange', 'banana', 'apple', 'grapes'];
+$veggie = ['carrot', 'pea'];
+
+$newArray = array_replace($fruit, $veggie);
+print_r($newArray);
+
+/* Multiple Arrays */
+$color = ['red', 'green', 'blue'];
+$newArray = array_replace($fruit, $veggie, $color);
+
+/* Associative Array */
+$veggie = ['a' => 'carrot', 'b' => 'pea'];
+$veggie = ['a' => 'carrot', 1 => 'pea'];
+
+/* Recursive Replace */
+$array1 = ["a" => ["red"], "b" => ["green", "pink"]];
+$array2 = ["a" => ["yellow"], "b" => ["black"]];
+$newArray = array_replace_recursive($array1, $array2);
+
+⬇️ array_pop() Function
+
+Deletes the last element of an array.
+
+Syntax
+array_pop(array)
+
+
+Return Value:
+Returns the last value of the array.
+If the array is empty or not an array, returns NULL.
+
+🧩 Example
+$fruit = ["orange", "banana", "apple", "grapes"];
+array_pop($fruit);
+print_r($fruit);
+
+⬆️ array_push() Function
+
+Inserts one or more elements to the end of an array.
+
+Syntax
+array_push(array, value1, value2, ...)
+
+
+Return Value:
+Returns the new number of elements in the array.
+
+🧩 Example
+$fruit = ["orange", "banana", "grapes"];
+array_push($fruit, "apple", "guava", "lemon");
+print_r($fruit);
+
+
+
+🔼 array_shift() Function
+
+Removes the first element from an array and returns its value.
+
+⚙️ Syntax
+array_shift(array)
+
+
+Return Value:
+Returns the value of the removed element, or NULL if the array is empty.
+
+🧩 Example
+$fruit = ["orange", "banana", "grapes"];
+
+array_shift($fruit);
+
+echo "<pre>";
+print_r($fruit);
+echo "</pre>";
+
+🔽 array_unshift() Function
+
+Inserts one or more elements at the beginning of an array.
+
+⚙️ Syntax
+array_unshift(array, value1, value2, value3, ...)
+
+
+Return Value:
+Returns the new number of elements in the array.
+
+🧩 Example
+$fruit = ["orange", "banana", "grapes"];
+
+array_unshift($fruit, "Apple", "Guava", "Lemon");
+
+echo "<pre>";
+print_r($fruit);
+echo "</pre>";
+
+🔗 array_merge() Function
+
+Merges one or more arrays into one array.
+
+⚙️ Syntax
+array_merge(array1, array2, array3, ...)
+
+
+Return Value:
+Returns the merged array.
+
+🧩 array_combine() Function
+
+Creates an array using one array for keys and another for values.
+
+⚙️ Syntax
+array_combine(keys, values)
+
+
+Return Value:
+Returns the combined array.
+Returns FALSE if the number of elements does not match.
+
+🧩 Examples
+/* Multiple Array Merge */
+$fruit = ["orange", "banana", "grapes"];
+$veggie = ['carrot', 'pea'];
+
+$newArray = array_merge($fruit, $veggie);
+print_r($newArray);
+
+/* Multiple Merge */
+$color = ['red', 'blue'];
+array_merge($fruit, $veggie, $color);
+
+/* Associative Array */
+$fruit = ['a' => "orange", 'b' => "banana", 'c' => "grapes"];
+$veggie = ['d' => 'carrot', 'e' => 'pea'];
+
+/* Numeric + Associative Mix */
+$veggie = ['b' => 'carrot', 'e' => 'pea', 55, 68];
+
+/* Keep duplicate keys from first array */
+$newArray = $fruit + $veggie;
+
+/* Recursive Merge */
+$newArray = array_merge_recursive($fruit, $veggie);
+
+/* More complex example */
+$veggie = [
+  'b' => ['color' => ['red', 'blue', 'green']],
+  'e' => 'pea',
+  55,
+  68
+];
+$newArray = array_merge_recursive($fruit, $veggie);
+
+/* Combine Keys & Values */
+$name = ["Ram", "Mohan", "Salman"];
+$age = ["35", "37", "43"];
+$newArray = array_combine($name, $age);
+
+print_r($newArray);
+
+✂️ array_slice() Function
+
+Returns selected parts of an array.
+
+⚙️ Syntax
+array_slice(array, start, length, preserve)
+
+
+Return Value:
+Returns the selected parts of the array.
+
+🧩 Examples
+$color = ["red", "green", "blue", "yellow", "brown"];
+$newArray = array_slice($color, 1, 2);
+print_r($newArray);
+
+/* Negative Index */
+print_r(array_slice($color, -2, 1));
+
+/* Preserve Keys */
+print_r(array_slice($color, 1, 2, true));
+
+/* Associative Array Example */
+$color = ['a' => 'red', 'b' => 'green', '42' => 'blue', 'd' => 'yellow'];
+array_slice($color, 0, 3);
+array_slice($color, 0, 3, true);
+
+/* Another Example */
+$a = ["0" => "red", "1" => "green", "2" => "blue", "3" => "yellow", "4" => "brown"];
+print_r(array_slice($a, 1, 2));
+
+🧩 array_splice() Function
+
+Removes selected elements from an array and replaces them with new elements.
+Returns an array containing the removed elements.
+
+⚙️ Syntax
+array_splice(array, start, length, array)
+
+
+Return Value:
+Returns the array consisting of the extracted elements.
+
+🧩 Examples
+$color = ["red", "green", "blue", "yellow", "brown"];
+$fruit = ["Orange", "Apple"];
+
+/* Different uses of array_splice */
+array_splice($color, 2);
+array_splice($color, 1, -1);
+array_splice($color, 1, -2);
+
+/* Remove last element */
+array_splice($color, -1);
+
+/* Remove first element */
+array_splice($color, 0, 1);
+
+/* Remove first two and add new ones */
+array_splice($color, 0, 2, $fruit);
+
+/* Replace specific elements */
+array_splice($color, 2, 2, $fruit);
+
+/* Use count() */
+array_splice($color, 2, count($color), $fruit);
+array_splice($color, 2, 0, $fruit);
+
+/* Add at beginning */
+array_splice($color, 0, 0, $fruit);
+
+/* Add at end */
+array_splice($color, count($color), 0, $fruit);
+
+print_r($color);
+
+🗝️ PHP Array Keys Functions
+🔹 array_keys()
+
+Returns all the keys from an array.
+
+⚙️ Syntax
+array_keys(array, value, strict)
+
+🔹 array_key_first() / array_key_last()
+
+Return the first or last key of an array (introduced in PHP 7.3).
+
+🔹 array_key_exists() / key_exists()
+
+Checks if a specific key exists in an array.
+
+🧩 Examples
+$color = ["red", "green", "blue", "yellow"];
+$newArray = array_keys($color);
+print_r($newArray);
+
+/* Associative Array */
+$color1 = [
+  "first" => "red",
+  "second" => "green",
+  "third" => "blue",
+  "fourth" => "yellow"
+];
+$newArray1 = array_keys($color1);
+print_r($newArray1);
+
+/* PHP 7.3+ */
+$newArray1 = array_key_first($color1);
+print_r($newArray1);
+
+$newArray1 = array_key_last($color1);
+print_r($newArray1);
+
+/* array_key_exists */
+$newArray1 = array_key_exists("third", $color1);
+print_r($newArray1);
+
+$newArray1 = array_key_exists("six", $color);
+print_r($newArray1);
+
+/* key_exists alias */
+$newArray1 = key_exists("second", $color1);
+print_r($newArray1);
+
+/* Conditional check */
+if ($newArray1) {
+  echo "Key exists!";
+} else {
+  echo "Key does not exist!";
+}
+
+
