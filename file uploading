@@ -1,0 +1,114 @@
+
+<?php
+
+
+if(isset($_FILES['image'])){
+    echo "<pre>";
+    print_r($_FILES);
+    echo "<pre>";
+
+
+    $file_name = $_FILES['image']['name'];
+    $file_size = $_FILES['image']['size'];
+    $file_tmp = $_FILES['image']['tmp_name'];
+
+
+    move_uploaded_file($file_tmp,"upload/".$file_name);
+}
+
+
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST"  enctype="multipart/form-data">
+
+    <input type="file" name="image"> <br><br>
+
+    <input type="submit">
+    </form>
+</body>
+</html>
+
+
+
+
+
+with validation
+=========================
+
+<?php
+if (isset($_FILES['image'])) {
+    echo "<pre>";
+    print_r($_FILES);
+    echo "</pre>";
+
+    $file_name = $_FILES['image']['name'];
+    $file_size = $_FILES['image']['size'];
+    $file_tmp  = $_FILES['image']['tmp_name'];
+    $file_type = $_FILES['image']['type'];
+
+    // Get file extension in lowercase (e.g., "jpg", "png")
+    $file_ext = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
+
+    // Allowed file extensions
+    $allowed_extensions = array("jpg", "jpeg", "png", "gif");
+
+    // Maximum file size (2 MB = 2 * 1024 * 1024 bytes)
+    $max_size = 2 * 1024 * 1024;
+
+    // Validation checks
+    if (in_array($file_ext, $allowed_extensions) === false) {
+        echo "<h3 style='color:red;'>Error: Only JPG, JPEG, PNG, and GIF files are allowed.</h3>";
+    } elseif ($file_size > $max_size) {
+        echo "<h3 style='color:red;'>Error: File size must be less than 2 MB.</h3>";
+    } else {
+        // If validation passes, move the uploaded file
+        if (!is_dir('upload')) {
+            mkdir('upload'); // Create upload folder if it doesn’t exist
+        }
+
+        if (move_uploaded_file($file_tmp, "upload/" . $file_name)) {
+            echo "<h3 style='color:green;'>File uploaded successfully!</h3>";
+        } else {
+            echo "<h3 style='color:red;'>Error uploading file!</h3>";
+        }
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload with Validation</title>
+</head>
+<body>
+    <form action="" method="POST" enctype="multipart/form-data">
+        <input type="file" name="image"> <br><br>
+        <input type="submit" value="Upload">
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
