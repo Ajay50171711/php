@@ -124,3 +124,137 @@ The following table lists the most important elements that can go inside $_SERVE
     echo $_SERVER["PHP_SELF"];
     echo $_SERVER["HTTP_HOST"];
 ?>
+
+
+
+
+
+
+
+
+
+create-cookie.php
+=====================
+<?php
+$cookie_name = "user";
+$cookie_value = "Yahoo Baba";
+
+setcookie($cookie_name,$cookie_value,time() + (86400 * 30), "/");
+?>
+
+<html>
+<body>
+    <?php
+        if(!isset($_COOKIE[$cookie_name])){
+            echo "Cookie is not set";
+        }else {
+            echo "cookie set";
+        }
+    ?>
+</body>
+</html>
+
+
+
+view-cookie.php
+=================
+
+<?php
+ echo "Cookie Value :" . $_COOKIE["user"];
+
+
+?>
+
+
+delete-cookie.php
+====================
+<?php
+ setcookie("user", "" ,time() - (86400 * 30), "/");
+?>
+
+
+
+
+
+
+
+
+
+
+
+
+PHP Sessions
+What is a PHP Session?
+When you work with an application, you open it, do some changes, and then you close it. This is much like a Session. The computer knows who you are. It knows when you start the application and when you end. But on the internet there is one problem: the web server does not know who you are or what you do, because the HTTP address doesn't maintain state.
+
+Session variables solve this problem by storing user information to be used across multiple pages (e.g. username, favorite color, etc). By default, session variables last until the user closes the browser.
+
+So; Session variables hold information about one single user, and are available to all pages in one application.
+
+Start a PHP Session
+A session is started with the session_start() function.
+
+Session variables are set with the PHP global variable: $_SESSION.
+
+Get PHP Session Variable Values
+Next, we create another page called "demo_session2.php". From this page, we will access the session information we set on the first page ("demo_session1.php").
+
+Notice that session variables are not passed individually to each new page, instead they are retrieved from the session we open at the beginning of each page (session_start()).
+
+Destroy a PHP Session
+To remove all global session variables and destroy the session, use session_unset() and session_destroy()
+
+
+session-create.php
+========================
+<?php
+    session_start();
+
+    $_SESSION["favcolor"] = "orange";
+
+    echo "Session Variable is set.";
+
+?>
+
+
+
+session-view.php
+=================
+<?php
+session_start();
+
+print_r($_SESSION);
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <?php
+        if(isset($_SESSION["favcolor"])){
+            echo "Favorite Color :" . $_SESSION["favcolor"];
+        }
+    ?>
+</body>
+</html>
+
+
+
+session-delete.php
+==================
+<?php
+session_start();
+
+session_unset();
+
+session_destroy();
+
+echo "Session is destroy.";
+?>
+
+
+
+
+
