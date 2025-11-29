@@ -1,0 +1,144 @@
+index.php
+==============
+ <a href='edit.php?id=<?php echo $row['sid']?>'>Edit</a>
+
+
+edit.php
+============================
+
+<?php include 'header.php'; ?>
+
+<div id="main-content">
+    <h2>Update Record</h2>
+    <?php 
+    
+    
+    $id = $_GET['id'];
+
+   
+        $conn = mysqli_connect("localhost","root","","crud");
+
+        $sql = "select * from student 
+        where sid = {$id};
+        ";
+
+        $result = mysqli_query($conn,$sql);
+
+    if(mysqli_num_rows($result)>0){
+
+
+        while($row  = mysqli_fetch_assoc($result)){
+
+        
+    
+    ?>
+    
+    
+    <form class="post-form" action="updatedata.php" method="post">
+      <div class="form-group">
+          <label>Name</label>
+          <input type="hidden" name="sid" value="<?php echo $row['sid']?>"/>
+          <input type="text" name="sname" value="<?php echo $row['sname']?>"/>
+      </div>
+      <div class="form-group">
+          <label>Address</label>
+          <input type="text" name="saddress" value="<?php echo $row['saddress']?>"/>
+      </div>
+      <div class="form-group">
+          <label>Class</label>
+
+          <?php 
+          
+          
+        $conn = mysqli_connect("localhost","root","","crud");
+
+        $sql1 = "select * from course";
+       
+
+        $result1 = mysqli_query($conn,$sql1);
+
+    if(mysqli_num_rows($result1)>0){
+
+          
+          
+          
+          ?>
+          <select name="sclass">
+
+          <?php 
+          
+
+          while($row1  = mysqli_fetch_assoc($result1)){
+
+
+            $selected = ($row['scourse']==$row1['cid']?"selected":"");
+          
+          echo  "<option $selected value='{$row1['cid']}'>{$row1['cname']}</option>";
+          }
+          ?>
+             
+             
+              
+          </select>
+          <?php }?>
+      </div>
+      <div class="form-group">
+          <label>Phone</label>
+          <input type="text" name="sphone" value="<?php echo $row['sphone']?>"/>
+      </div>
+      <input class="submit" type="submit" value="Update"/>
+    </form>
+    <?php 
+    }
+}
+    ?>
+</div>
+</div>
+</body>
+</html>
+==================================================================================================
+updatedata.php
+===================
+
+<?php
+
+$stu_id = $_POST['sid'];
+$stu_name = $_POST['sname'];
+
+$stu_phone = $_POST['sphone'];
+
+$stu_address = $_POST['saddress'];
+
+$stu_class = $_POST['sclass'];
+
+
+
+
+
+     $conn = mysqli_connect("localhost","root","","crud");
+
+        $sql = "
+        
+        update student
+
+        set 
+
+        sname = '{$stu_name}',
+         sphone = '{$stu_phone}',
+          saddress = '{$stu_address}',
+           scourse = '{$stu_class}'
+
+           where sid = '{$stu_id}'
+        ";
+
+       mysqli_query($conn,$sql);
+
+
+
+        header("Location: http://localhost/manasi/crud_html/index.php");
+
+    mysqli_close($conn)
+
+?>
+
+
